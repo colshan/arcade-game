@@ -1,5 +1,5 @@
-let grunt = new Audio('images/grunt.mp3');
-let scream = new Audio('images/scream.mp3');
+let grunt = new Audio('audio/grunt.mp3');
+let scream = new Audio('audio/scream.mp3');
 
 
 // Enemies our player must avoid
@@ -50,6 +50,7 @@ var Player = function() {
 }
 
 Player.prototype.update = function (){
+    //this function does nothing, but is called by the engine, so it has to be defined.
 }
 
 Player.prototype.render = function (dt){
@@ -72,7 +73,7 @@ Player.prototype.injure = function (){
 Player.prototype.increaseMoney = function () {
 
     this.money += 20;
-    let bell = new Audio('images/bell.mp3');
+    let bell = new Audio('audio/bell.mp3');
     bell.play();
     if (this.money > this.max){
         this.max = this.money;
@@ -170,10 +171,13 @@ Gem.prototype.render = function() {
 }
 
 Gem.prototype.update = function () {
+    //this function does nothing, but is required to be here
+    //welllll..actually it isn't required to be here...
 
 }
 
 Gem.prototype.position = function () {
+    //this function is called
 
     this.x = Math.random()*708;
     this.y = Math.random()*406;

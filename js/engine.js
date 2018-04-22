@@ -103,7 +103,7 @@ var Engine = (function(global) {
 
         let startButton = document.getElementById('start');
         startButton.addEventListener('click', function(){
-            music = new Audio('images/bensound-dance.mp3');
+            music = new Audio('audio/bensound-dance.mp3');
             music.loop = true;
             music.play();
             $('#music').on('click', function (){
