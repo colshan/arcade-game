@@ -47,23 +47,14 @@ var Engine = (function(global) {
                 dt = (now - lastTime) / 1000.0;
 
             //increase speed after some time elapses
-            if (now - firstTime > 45000 && !player.dead){
-                dt = dt*1.1;
-                music.playbackRate = 1.1;
-                console.log('45');
-            }
-            if (now - firstTime > 90000 && !player.dead){
-                dt = dt*1.1;
-                music.playbackRate = 1.2;
+            if (!player.dead){
+                const elapsedTime = now - firstTime;
+                const scaler = 1 + Math.floor(elapsedTime/30000)/10;
+                dt = dt*scaler;
+                music.playbackSpeed =  scaler;
             }
 
-            if (now -firstTime > 120000 && !player.dead){
-                dt = dt*1.1;
-                music.playbackRate = 1.3;
-            }
-
-
-
+            console.log(dt);
             /* Call our update/render functions, pass along the time delta to
              * our update function since it may be used for smooth animation.
              */
