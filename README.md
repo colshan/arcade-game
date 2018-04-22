@@ -7,4 +7,4 @@ The objective is to increase account balance by collecting gems while avoiding c
 ### How to run
 Just open it and click "Start".  Depends on JQuery, but that is included in the repository.
 
-![screen shot](https://github.com/colshan/arcade-game/tree/master/images/screenshot.png)
+![screen shot](https://raw.githubusercontent.com/colshan/arcade-game/master/images/screenshot.png)
