@@ -2,10 +2,34 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Effective JavaScript: Frogger</title>
+    <title>Arcade</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+	<div id="modal-background">
+		<div id="modal-box">
+			<div id="modal-content">
+				<p>Collect gems to increase your account balance.  Avoid pickpockets.  The game is over when you're broke.
+				</p>
+				<button class="modal-button" id="start">Start</button>
+			</div>
+		</div>
+	</div>
+	<header>
+		<h1>Arcade Game</h1>
+		<span class="head" id="money">$100</span>
+		<button class="restart">Restart</button>
+		<button id="pause">Pause</button>
+		<button id="music">Music</button>
+	</header>
+	<canvas id="canvas"></canvas>
+
+	<footer>Credits:
+		<span><a href="http://www.bensound.com">music</a> |</span>
+		<span><a href="http://soundbible.com/1791-Torture.html">torture</a> |</span>
+		<span><a href="http://soundbible.com/2190-Front-Desk-Bell.html">bell</a></span>
+	</footer>
+	<script src="js/jquery-3.3.2.js"></script>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
