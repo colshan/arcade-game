@@ -1,3 +1,5 @@
+"use strict";
+
 let grunt = new Audio('audio/grunt.mp3');
 let scream = new Audio('audio/scream.mp3');
 
@@ -10,13 +12,13 @@ var Enemy = function() {
     let sprites = ['images/char-cat-girl.png',
                     'images/char-horn-girl.png',
                     'images/char-pink-girl.png',
-                    'images/char-princess-girl.png']
+                    'images/char-princess-girl.png'];
 
     this.sprite = sprites[Math.floor(Math.random()*4)];
 
     this.y = Math.floor(Math.random()*6-1)*85+60;
     this.x = Math.floor(Math.random()*-2000);
-    this.speed = Math.random()*3+1
+    this.speed = Math.random()*3+1;
     this.size = 70;
 };
 
@@ -47,15 +49,15 @@ var Player = function() {
     this.dead = false;
     this.max = 100;
     this.size = 70;
-}
+};
 
 Player.prototype.update = function (){
     //this function does nothing, but is called by the engine, so it has to be defined.
-}
+};
 
-Player.prototype.render = function (dt){
+Player.prototype.render = function (){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 Player.prototype.injure = function (){
 
@@ -68,7 +70,7 @@ Player.prototype.injure = function (){
             this.die();
         }
     }
-}
+};
 
 Player.prototype.increaseMoney = function () {
 
@@ -81,7 +83,7 @@ Player.prototype.increaseMoney = function () {
 
     document.getElementById('money').innerHTML = '$' + this.money;
 
-}
+};
 
 Player.prototype.die = function () {
 
@@ -94,7 +96,7 @@ Player.prototype.die = function () {
     $('.modal-button').on('click', function () {
         window.location.reload(false);
     });
-}
+};
 
 Player.prototype.handleInput = function (direction){
     if (!this.dead){
@@ -120,7 +122,7 @@ Player.prototype.handleInput = function (direction){
                 }
         }
     }   
-}
+};
 
 
 Player.prototype.checkCollision = function (otherEntity) {
@@ -135,15 +137,15 @@ Player.prototype.checkCollision = function (otherEntity) {
             }
         }
     return false;
-}
+};
 
 Player.prototype.checkCollisions = function () {
 
-    for (enemy of allEnemies){
+    for (let enemy of allEnemies){
 
             if (this.checkCollision(enemy)){
                 this.injure();
-            };
+            }
         }
 
     if (this.checkCollision(gem)){
@@ -152,7 +154,7 @@ Player.prototype.checkCollisions = function () {
         gem.position();
 
     }
-}
+};
 
 
 
@@ -164,17 +166,17 @@ var Gem = function () {
     this.x = Math.random()*708;
     this.y = Math.random()*406;
     this.size = 70;
-}
+};
 
 Gem.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 Gem.prototype.update = function () {
     //this function does nothing, but is required to be here
     //welllll..actually it isn't required to be here...
 
-}
+};
 
 Gem.prototype.position = function () {
     //this function is called
@@ -182,7 +184,7 @@ Gem.prototype.position = function () {
     this.x = Math.random()*708;
     this.y = Math.random()*406;
 
-}
+};
 
 
 // This listens for key presses and sends the keys to your
@@ -196,15 +198,13 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-})
+});
 
 
 const player = new Player();
 const gem = new Gem();
             
 let allEnemies = [];
-generateEnemies();
-
 
 function generateEnemies () {
 
@@ -212,5 +212,10 @@ function generateEnemies () {
         allEnemies.push(new Enemy());
     }
 }
+
+generateEnemies();
+
+
+
 
 
