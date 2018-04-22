@@ -22,10 +22,11 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.getElementById('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
-        music;
-        firstTime = Date.now()
-        paused = false;
+        lastTime,
+        music,
+        firstTime,
+        paused = false,
+        timePaused;
 
     canvas.width = 808;
     canvas.height = 606;
@@ -97,7 +98,14 @@ var Engine = (function(global) {
         });
 
         $('#pause').on('click', function(){
-            lastTime = Date.now();
+            if (paused){
+                lastTime = Date.now();
+                //add pause time to firstTime to prevent premature speed increase
+                firstTime = firstTime + lastTime - timePaused;
+            }
+            else {
+                timePaused = Date.now();
+            }
             paused = (paused !== true);
         });
 
